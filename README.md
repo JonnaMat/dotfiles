@@ -51,6 +51,20 @@ ln -s ~/src/dotfiles/bash/.bashrc ~/.bashrc
 ln -s ~/src/dotfiles/bash/.bash_aliases ~/.bash_aliases
 ```
 
+## tmux
+
+![tmux.png](images%2Ftmux.png)
+
+Setup using Symlink from the expected location to this location and reload the configurations:
+
+```commandline
+ln -s ~/src/dotfiles/tmux/tmux.conf ~/.tmux.conf
+tmux source-file ~/.tmux.conf
+```
+
+For installing and loading tmux plugins I use tpm: https://github.com/tmux-plugins/tpm. 
+> Press `ctrl+b + I` (capital i, as in Install) to fetch the plugins.
+
 
 ## Feedback
 
