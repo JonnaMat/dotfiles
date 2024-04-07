@@ -35,16 +35,9 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-PS1='\$ '
-
-# If this is an xterm set the title to dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;\w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+# set PS1 (\$)  and terminal window title (\[\e]0; ... \a\])
+# \w - current working directory
+PS1="\[\e]0;\w\a\]\$ " 
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
