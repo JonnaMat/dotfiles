@@ -39,7 +39,12 @@ Using them without understanding their implications may cause unexpected behavio
 
 ## bash
 
-![bash.png](images%2Fbash.png)
+**Dracula theme**
+![bash-dracula.png](images/bash-dracula.png)
+**One Dark Vivid theme**
+![bash-one-dark-vivid.png](images/bash-one-dark-vivid.png)
+
+### .bashrc
 
 **Note:** I am using `JetBrainsMono Nerd Font` from https://www.nerdfonts.com.
 
@@ -50,6 +55,14 @@ ln -s ~/src/dotfiles/bash/.bashrc ~/.bashrc
 ln -s ~/src/dotfiles/bash/.bash_aliases ~/.bash_aliases
 ```
 
+### gnome-terminal-profile
+
+Import `Dracula` and `One Dark Vivid` themes:
+
+```commandline
+dconf load /org/gnome/terminal/legacy/profiles:/ < gnome-terminal-profiles.dconf
+```
+
 ## tmux
 
 ![tmux.png](images%2Ftmux.png)
@@ -57,8 +70,7 @@ ln -s ~/src/dotfiles/bash/.bash_aliases ~/.bash_aliases
 Setup using Symlink from the expected location to this location and reload the configurations:
 
 ```commandline
-ln -s ~/src/dotfiles/tmux/tmux.conf ~/.tmux.conf
-tmux source-file ~/.tmux.conf
+tmux source-file ~/src/dotfiles/tmux/tmux.conf ~/.tmux.conf
 ```
 
 For installing and loading tmux plugins I use tpm: https://github.com/tmux-plugins/tpm. 
