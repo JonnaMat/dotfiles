@@ -23,7 +23,6 @@ This repository contains my collection of dotfiles for tools such as:
 
 - Shell configurations (Bash)
 - Terminal multiplexers (e.g., Tmux)
-- And more...
 
 
 ## Usage
