@@ -79,7 +79,8 @@ dconf load /org/gnome/terminal/legacy/profiles:/ < gnome-terminal-profiles.dconf
 Setup using Symlink from the expected location to this location and reload the configurations:
 
 ```commandline
-tmux source-file ~/src/dotfiles/tmux/tmux.conf ~/.tmux.conf
+ln -s ~/src/dotfiles/tmux/tmux.conf ~/.tmux.conf
+tmux source-file ~/.tmux.conf
 ```
 
 For installing and loading tmux plugins I use tpm: https://github.com/tmux-plugins/tpm. 
