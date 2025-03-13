@@ -24,7 +24,6 @@ This repository contains my collection of dotfiles for tools such as:
 - Shell configurations (Bash)
 - Terminal multiplexers (e.g., Tmux)
 
-
 ## Usage
 
 Feel free to browse through the dotfiles and copy any configurations that you find useful. 
@@ -36,6 +35,17 @@ review the code to understand what each configuration does.
 - **Use at Your Own Risk:** These dotfiles are tailored to my specific needs. 
 Using them without understanding their implications may cause unexpected behavior. Proceed with caution.
 
+## terminal font
+
+Download font from https://www.nerdfonts.com
+
+**Note:** I am using `JetBrainsMono Nerd Font`.
+
+```commandline
+mv JetBrainsMono*.ttf ~/.fonts
+
+fc-cache -fv
+```
 
 ## bash
 
@@ -46,7 +56,6 @@ Using them without understanding their implications may cause unexpected behavio
 
 ### .bashrc
 
-**Note:** I am using `JetBrainsMono Nerd Font` from https://www.nerdfonts.com.
 
 Setup using Symlink from the expected location to this location:
 
