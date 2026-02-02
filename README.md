@@ -49,8 +49,6 @@ fc-cache -fv
 
 ## bash
 
-**Dracula theme**
-![bash-dracula.png](images/bash-dracula.png)
 
 ### .bashrc
 
@@ -64,7 +62,10 @@ ln -s ~/src/dotfiles/bash/.bash_aliases ~/.bash_aliases
 
 ### gnome-terminal-profile
 
-Import `Dracula` theme:
+**Dracula theme**
+![bash-dracula.png](images/bash-dracula.png)
+
+Import theme:
 
 ```commandline
 dconf load /org/gnome/terminal/legacy/profiles:/ < ~/src/dotfiles/bash/gnome-terminal-profiles.dconf
