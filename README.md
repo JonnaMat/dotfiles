@@ -50,16 +50,6 @@ fc-cache -fv
 ## bash
 
 
-### .bashrc
-
-
-Setup using Symlink from the expected location to this location:
-
-```commandline
-ln -s ~/src/dotfiles/bash/.bashrc ~/.bashrc                    
-ln -s ~/src/dotfiles/bash/.bash_aliases ~/.bash_aliases
-```
-
 ### gnome-terminal-profile
 
 **Dracula theme**
