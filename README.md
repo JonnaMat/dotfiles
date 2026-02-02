@@ -51,8 +51,6 @@ fc-cache -fv
 
 **Dracula theme**
 ![bash-dracula.png](images/bash-dracula.png)
-**One Dark Vivid theme**
-![bash-one-dark-vivid.png](images/bash-one-dark-vivid.png)
 
 ### .bashrc
 
@@ -66,10 +64,10 @@ ln -s ~/src/dotfiles/bash/.bash_aliases ~/.bash_aliases
 
 ### gnome-terminal-profile
 
-Import `Dracula` and `One Dark Vivid` themes:
+Import `Dracula` theme:
 
 ```commandline
-dconf load /org/gnome/terminal/legacy/profiles:/ < gnome-terminal-profiles.dconf
+dconf load /org/gnome/terminal/legacy/profiles:/ < ~/src/dotfiles/bash/gnome-terminal-profiles.dconf
 ```
 
 ## tmux

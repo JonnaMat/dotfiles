@@ -1,6 +1,6 @@
 [/]
-default='eef12337-bbe9-47e0-91f7-3e24b2fc13b7'
-list=['0d9b576b-4c0b-4a26-9e79-dbf27b13b17b', 'eef12337-bbe9-47e0-91f7-3e24b2fc13b7']
+default='0d9b576b-4c0b-4a26-9e79-dbf27b13b17b'
+list=['0d9b576b-4c0b-4a26-9e79-dbf27b13b17b']
 
 [:0d9b576b-4c0b-4a26-9e79-dbf27b13b17b]
 background-color='rgb(40,42,54)'
@@ -12,15 +12,4 @@ scrollbar-policy='never'
 use-system-font=false
 use-theme-colors=false
 visible-name='Dracula'
-
-[:eef12337-bbe9-47e0-91f7-3e24b2fc13b7]
-background-color='rgb(40,44,52)'
-bold-is-bright=true
-font='JetBrainsMono Nerd Font 12'
-foreground-color='rgb(187,187,187)'
-palette=['rgb(0,0,0)', 'rgb(239,89,111)', 'rgb(137,202,120)', 'rgb(229,192,123)', 'rgb(97,175,239)', 'rgb(213,95,222)', 'rgb(43,186,197)', 'rgb(100,106,115)', 'rgb(70,76,85)', 'rgb(239,89,111)', 'rgb(137,202,120)', 'rgb(229,192,123)', 'rgb(97,175,239)', 'rgb(213,95,222)', 'rgb(43,186,197)', 'rgb(187,187,187)']
-use-system-font=false
-use-theme-colors=false
-use-theme-transparency=false
-visible-name='One Dark Vivid'
 
