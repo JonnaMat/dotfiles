@@ -49,16 +49,18 @@ fc-cache -fv
 
 ## bash
 
+### Gnome Terminal Theme
 
-### gnome-terminal-profile
+I like to select a theme from: https://gogh-co.github.io/Gogh/
 
-**Dracula theme**
-![bash-dracula.png](images/bash-dracula.png)
+**Note:** I am using `Gruvbox` with color0 changed to `#3C3836`.
+
+![bash-gruvbox.png](images/bash-gruvbox.png)
 
 Import theme:
 
 ```commandline
-dconf load /org/gnome/terminal/legacy/profiles:/ < ~/src/dotfiles/bash/gnome-terminal-profiles.dconf
+bash -c "$(wget -qO- https://git.io/vQgMr)" -- "Gruvbox"
 ```
 
 ## tmux
@@ -74,6 +76,14 @@ tmux source-file ~/.tmux.conf
 
 For installing and loading tmux plugins I use tpm: https://github.com/tmux-plugins/tpm. 
 > Press `ctrl+b + I` (capital i, as in Install) to fetch the plugins.
+
+## bashrc
+
+Add `. ~/.bashrc_custom` to your bashrc file and copy `.bashrc_custom` (no symlink here as I expect bashrc_custom to further be customized):
+
+```commandline
+cp ~/src/dotfiles/bash/bashrc_custom ~/.bashrc_custom
+```
 
 
 ## Feedback
