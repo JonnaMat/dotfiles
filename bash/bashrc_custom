@@ -1,0 +1,150 @@
+alias bashrc.base="charm ~/.bashrc"
+alias bashrc.config="charm ~/.bashrc_custom"
+alias tmux.config="charm /home/jonna/.tmux.conf"
+alias ssh.config="charm /home/jonna/.ssh/config"
+alias copy="xclip -selection clipboard"
+
+
+---
+
+export EDITOR=vim
+
+---
+
+charm() {
+    if [ "$1" ]; then
+        charm_command="bash /home/jonna/pycharm-2025.2.1.1/bin/pycharm.sh ${1}"
+    else
+        charm_command="bash /home/jonna/pycharm-2025.2.1.1/bin/pycharm.sh"
+    fi
+    tmux has-session -t pycharm-session 2>/dev/null
+    if [ $? != 0 ]; then
+      tmux new-session -d -s pycharm-session "$charm_command"
+    else
+      $charm_command
+    fi
+    exit
+}
+
+
+# --- GIT ----------------------------------------------------------------------
+
+alias gca="git commit --amend --no-edit"
+alias gc="git commit"
+
+alias grh="git reset --hard origin"
+alias gp="git pull"
+alias grc="git rebase --continue"
+
+alias p="git push origin HEAD:refs/for/master --signed"
+alias gs="git stash"
+alias gp="git pull"
+
+gpf() {
+  git reset --hard origin
+  git pull
+}
+
+# undo last commit but keep changes
+gundo() {
+  git reset HEAD^
+}
+
+gcm() {
+    git checkout master
+    git pull
+}
+
+gcmf() {
+    git stash
+    git checkout master
+    git reset --hard origin
+    git pull
+}
+
+gri() {
+   if [ "$1" ]; then
+        git rebase -i HEAD~$1
+    else
+        echo "Argument missing: git rebase -i HEAD~\$1"
+    fi
+}
+
+---
+
+q() {
+    python3 /home/jonna/src/queue/q.py $1
+}
+
+# --- KUBECTL ------------------------------------------------------------------
+
+kc.help() {
+  echo "alias kc='kubectl'"
+  echo "alias kcj='kc get jobs'"
+  echo "alias kcp='kc get pods'"
+  echo "alias kc.events='kc get events -w'"
+  echo "kcd (delete job)"
+  echo "kce <pod name>"
+  echo "kc.start <.yaml>"
+  echo "kc.logs <pod name>"
+}
+
+
+alias kc="kubectl"
+alias kubectl.help="kc.help"
+alias kcj="kc get jobs"
+alias kcp="kc get pods"
+alias kc.events="kc get events -w"
+
+kcd() {
+  kcj
+
+  read -r -p "Select job to delete: " response
+    case "$response" in
+        [N])
+            return 1
+            ;;
+        *)
+            kc delete job $response
+            return 0
+            ;;
+    esac
+}
+
+kc.start() {
+  echo "\$1 is the name of the '.yaml'"
+  ls
+  # helm template . --dry-run=server --values $1 | kubectl create -f-
+  helm template /home/jonna/src/embedl/ci/helm-charts/training-job/ --values $1 | kubectl create -f-
+}
+
+kce() {
+  echo "kc (kubectl) get pods"
+  kc get pods
+  kc exec -it $1 -- bash
+}
+
+kc.logs() {
+  kcp
+  kc logs $1
+}
+
+kc.scp() {
+  kcp
+  echo "kubectl cp jonna/<podNAME>:<remote dir> <local dir>"
+}
+
+# --- CLAUDE ---------------------------------------------
+
+og_claude() {
+  command claude "$@"
+}
+
+claude() {
+
+   if [ -n "$TMUX" ]; then
+      command claude --dangerously-skip-permissions --remote-control "$@"
+    else
+      tmux new-session -s claude -- command claude --dangerously-skip-permissions --remote-control "$@"
+    fi
+}
