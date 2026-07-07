@@ -5,11 +5,8 @@ alias ssh.config="charm /home/jonna/.ssh/config"
 alias copy="xclip -selection clipboard"
 
 
----
-
 export EDITOR=vim
 
----
 
 charm() {
     if [ "$1" ]; then
@@ -69,8 +66,6 @@ gri() {
         echo "Argument missing: git rebase -i HEAD~\$1"
     fi
 }
-
----
 
 q() {
     python3 /home/jonna/src/queue/q.py $1
