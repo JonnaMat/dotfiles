@@ -8,10 +8,13 @@ to suit your needs.
 
 ## Table of Contents
 
-1. [Introduction](#Introduction)
-2. [Usage](#Usage)
-3. [bash](#bash)
-4. [Feedback](#Feedback)
+1. [Introduction](#introduction)
+2. [Usage](#usage)
+3. [terminal font](#terminal-font)
+4. [bash](#bash)
+5. [tmux](#tmux)
+6. [bashrc](#bashrc)
+7. [Feedback](#feedback)
 
 
 ## Introduction
