@@ -14,7 +14,8 @@ to suit your needs.
 4. [bash](#bash)
 5. [tmux](#tmux)
 6. [bashrc](#bashrc)
-7. [Feedback](#feedback)
+7. [zed](#zed)
+8. [Feedback](#feedback)
 
 
 ## Introduction
@@ -26,6 +27,7 @@ This repository contains my collection of dotfiles for tools such as:
 
 - Shell configurations (Bash)
 - Terminal multiplexers (e.g., Tmux)
+- Editors (Zed)
 
 ## Usage
 
@@ -45,7 +47,8 @@ Download font from https://www.nerdfonts.com
 **Note:** I am using `JetBrainsMono Nerd Font`.
 
 ```commandline
-mv JetBrainsMono*.ttf ~/.fonts
+mkdir -p ~/.local/share/fonts
+mv JetBrainsMono*.ttf ~/.local/share/fonts
 
 fc-cache -fv
 ```
@@ -88,6 +91,23 @@ Add `. ~/.bashrc_custom` to your bashrc file and copy `.bashrc_custom` (no symli
 cp ~/src/dotfiles/bash/bashrc_custom ~/.bashrc_custom
 ```
 
+
+## zed
+
+Setup using symlink from the expected location to this location:
+
+```commandline
+mkdir -p ~/.config/zed
+ln -s ~/src/dotfiles/zed/settings.json ~/.config/zed/settings.json
+```
+
+Zed applies settings on save, no restart needed.
+
+**Note:** Matches the terminal setup - `JetBrainsMono Nerd Font`
+(see [terminal font](#terminal-font)) and Gruvbox light/dark. Keymap is `JetBrains`.
+
+**Caution:** `session.trust_all_worktrees` is `true`, which skips Zed's prompt before
+running project tasks from a newly opened worktree. Remove it if you open untrusted repos.
 
 ## Feedback
 

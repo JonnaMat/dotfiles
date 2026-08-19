@@ -1,27 +1,20 @@
-alias bashrc.base="charm ~/.bashrc"
-alias bashrc.config="charm ~/.bashrc_custom"
-alias tmux.config="charm /home/jonna/.tmux.conf"
-alias ssh.config="charm /home/jonna/.ssh/config"
-alias copy="xclip -selection clipboard"
+alias bashrc.base="zed ~/.bashrc"
+alias bashrc.config="zed ~/.bashrc_custom"
+alias tmux.config="zed ~/.tmux.conf"
+alias ssh.config="zed ~/.ssh/config"
 
+copy() {
+  if [ -n "$WAYLAND_DISPLAY" ] && command -v wl-copy >/dev/null 2>&1; then
+    wl-copy
+  elif command -v xclip >/dev/null 2>&1; then
+    xclip -selection clipboard
+  else
+    echo "copy: need wl-copy (Wayland) or xclip (X11)" >&2
+    return 1
+  fi
+}
 
 export EDITOR=vim
-
-
-charm() {
-    if [ "$1" ]; then
-        charm_command="bash /home/jonna/pycharm-2025.2.1.1/bin/pycharm.sh ${1}"
-    else
-        charm_command="bash /home/jonna/pycharm-2025.2.1.1/bin/pycharm.sh"
-    fi
-    tmux has-session -t pycharm-session 2>/dev/null
-    if [ $? != 0 ]; then
-      tmux new-session -d -s pycharm-session "$charm_command"
-    else
-      $charm_command
-    fi
-    exit
-}
 
 
 # --- GIT ----------------------------------------------------------------------
@@ -29,16 +22,14 @@ charm() {
 alias gca="git commit --amend --no-edit"
 alias gc="git commit"
 
-alias grh="git reset --hard origin"
+alias grh="git reset --hard @{u}"
 alias gp="git pull"
 alias grc="git rebase --continue"
 
-alias p="git push origin HEAD:refs/for/master --signed"
 alias gs="git stash"
-alias gp="git pull"
 
 gpf() {
-  git reset --hard origin
+  git reset --hard @{u}
   git pull
 }
 
@@ -55,7 +46,7 @@ gcm() {
 gcmf() {
     git stash
     git checkout master
-    git reset --hard origin
+    git reset --hard @{u}
     git pull
 }
 
@@ -94,16 +85,16 @@ alias kc.events="kc get events -w"
 kcd() {
   kcj
 
-  read -r -p "Select job to delete: " response
-    case "$response" in
-        [N])
-            return 1
-            ;;
-        *)
-            kc delete job $response
-            return 0
-            ;;
-    esac
+  read -r -p "Select job to delete (empty to cancel): " response
+  case "$response" in
+      ""|[nN]|[nN][oO])
+          echo "cancelled"
+          return 1
+          ;;
+      *)
+          kc delete job "$response"
+          ;;
+  esac
 }
 
 kc.start() {
@@ -140,6 +131,6 @@ claude() {
    if [ -n "$TMUX" ]; then
       command claude --dangerously-skip-permissions --remote-control "$@"
     else
-      tmux new-session -s claude -- command claude --dangerously-skip-permissions --remote-control "$@"
+      tmux new-session -A -s claude -- command claude --dangerously-skip-permissions --remote-control "$@"
     fi
 }
